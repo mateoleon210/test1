@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FAQ - NYC Nightlife Experience</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <img src="images/logo1.jpeg" alt="Logo" class="logo">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="Contact.html">Contact Us</a>
+      <a href="FAQ.html" class="active">FAQ</a>
+      <a href="merch.html">Merch</a>
+    </div>
+  </div>
+
+  <!-- FAQ Content -->
+  <main>
+    <div class="faq-section">
+      <h1>Frequently Asked Questions</h1>
+      <div class="faq-container">
+        <div class="faq-item">
+          <p class="faq-question">1. What is included in the $120 package?</p>
+          <p class="faq-answer">Entrance fees, a welcome shot, and guided access to some of NYC's top nightlife spots.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">2. Are the guides fluent in multiple languages?</p>
+          <p class="faq-answer">Yes! Our guides speak English, Spanish, and Portuguese.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">3. How can I book a tour?</p>
+          <p class="faq-answer">You can reach out through our contact page or book directly on our website.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">4. What time do the tours usually start?</p>
+          <p class="faq-answer">Our tours typically start at 8:00 PM, but times may vary depending on the day.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">5. Are there any dress code requirements?</p>
+          <p class="faq-answer">Smart casual attire is recommended, as some venues have specific dress codes.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2024 NYC Nightlife Experience. All rights reserved.
+  </div>
+
+  <!-- JavaScript for FAQ Toggle -->
+  <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

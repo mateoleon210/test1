@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merch Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="images/logo1.jpeg" alt="Logo" class="logo">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="Contact.html">Contact Us</a>
+            <a href="FAQ.html">FAQ</a>
+            <a href="merch.html" class="active">Merch</a>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="merch-header">
+        <h1>Merch Store</h1>
+        <p>Get your exclusive gear and support our journey!</p>
+    </header>
+
+    <!-- Merch Products Section -->
+    <section class="merch-container">
+        <!-- Shirt 1 -->
+        <div class="product">
+            <img src="images/fun_picture.jpeg" alt="Shirt 1">
+            <h3>Cool Shirt 1</h3>
+            <p>$40.00 USD</p>
+            <label for="shirt1-size">Size:</label>
+            <select id="shirt1-size">
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+            </select>
+            <button onclick="startPayment('price_shirt1')">Buy Now</button>
+        </div>
+
+        <!-- Shirt 2 -->
+        <div class="product">
+            <img src="images/fun_picture.jpeg" alt="Shirt 2">
+            <h3>Cool Shirt 2</h3>
+            <p>$40.00 USD</p>
+            <label for="shirt2-size">Size:</label>
+            <select id="shirt2-size">
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+            </select>
+            <button onclick="startPayment('price_shirt2')">Buy Now</button>
+        </div>
+
+        <!-- Tote Bag -->
+        <div class="product">
+            <img src="images/fun_picture.jpeg" alt="Tote Bag">
+            <h3>Stylish Tote Bag</h3>
+            <p>$25.00 USD</p>
+            <button onclick="startPayment('price_tote')">Buy Now</button>
+        </div>
+
+        <!-- Hat -->
+        <div class="product">
+            <img src="images/fun_picture.jpeg" alt="Hat">
+            <h3>Trendy Hat</h3>
+            <p>$20.00 USD</p>
+            <button onclick="startPayment('price_hat')">Buy Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 NYC Nightlife Experience. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Stripe Integration -->
+    <script>
+        const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY'); 
+
+        /**
+         * Starts the payment process for a product.
+         * @param {string} priceId - The Stripe Price ID for the product.
+         */
+        async function startPayment(priceId) {
+            try {
+                // Call Netlify Function to create a checkout session
+                const response = await fetch('/.netlify/functions/create-checkout-session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ priceId })
+                });
+
+                const { sessionId } = await response.json();
+
+                // Redirect to Stripe Checkout
+                const { error } = await stripe.redirectToCheckout({ sessionId });
+                if (error) {
+                    console.error('Error:', error);
+                    alert('Payment failed. Please try again.');
+                }
+            } catch (err) {
+                console.error('Error starting payment:', err);
+                alert('Something went wrong. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>

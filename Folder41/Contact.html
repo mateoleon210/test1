@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us - NYC Nightlife Experience</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <img src="images/logo1.jpeg" alt="Logo" class="logo">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="Contact.html" class="active">Contact Us</a>
+      <a href="FAQ.html">FAQ</a>
+      <a href="merch.html" >Merch</a>
+    </div>
+  </div>
+
+  <!-- Contact Content -->
+  <main>
+    <div class="content contact-content">
+      <h1>Contact Us</h1>
+      <p>If you have any questions or want to book a private tour, feel free to reach out to us!</p>
+      
+      <!-- Netlify Form Integration -->
+      <form class="contact-form" name="contact" method="POST" data-netlify="true">
+        <label>
+          Your Name:
+          <input type="text" name="name" placeholder="Your Name" required>
+        </label><br>
+        
+        <label>
+          Your Email:
+          <input type="email" name="email" placeholder="Your Email" required>
+        </label><br>
+        
+        <label>
+          Your Message:
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        </label><br>
+        
+        <!-- Redirect to Thank You Page After Submission -->
+        <input type="hidden" name="redirect" value="thank-you.html">
+        
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    © 2024 NYC Nightlife Experience. All rights reserved.
+  </div>
+</body>
+</html>
